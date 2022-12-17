@@ -1,13 +1,15 @@
-name: Build
+# This is a basic workflow to help you get started with Actions
+
+name: Update production on Github Release
+
+# Controls when the workflow will run
 on:
-  push:
-  pull_request:
-  repository_dispatch:
+  release:
+    types: [prereleased, released]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    needs: test
     steps:
       - uses: actions/checkout@v2
       - name: Publish
